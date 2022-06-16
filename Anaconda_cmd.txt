@@ -1,0 +1,26 @@
+아나콘다 업데이트
+conda update -n base conda
+conda update --all
+python -m pip install --upgrade pip
+
+가상환경 생성
+conda create -n 이름 python=3.----
+가상환경 삭제
+conda remove --name 이름 --all
+가상환경의 패키지 확인 및 추출
+pip freeze > requirement.txt
+패키지 설치 : 가상환경 활성화 후
+pip install -r requirement.txt
+
+주피터 노트북 커널 생성
+가상환경 활성화 후
+python -m ipykernel install --user --name=이름
+
+커널제거
+jupyter kernelspec uninstall 이름
+
+주피터 시작 경로설정
+C:\Users\seonghee.choi\.jupyter
+내 config 파일 오픈
+c.NotebookApp.notebook_dir='경로' 
+확인하여 경로 변경

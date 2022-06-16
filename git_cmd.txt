@@ -1,0 +1,50 @@
+깃허브 연결
+ git config --global user.email "next450@gmail.com"
+ git config --global user.name "seongheechoi"
+
+ git init : 원하는 폴더에서 초기화, 로컬 저장소 생성
+
+ git add 파일명 : stage에 올림, 커밋 전 상태
+ git add -u : 삭제된 파일이 커밋에 반영이 안될 때 사용
+
+ git commit -m "설명" : 파일 로컬 저장소로 저장
+
+ git log : 커밋 버전 확인
+ git log --oneline --decorate : 커밋확인하나 한줄로 정리되게 
+ git log --oneline --decorate --graph --all : 커밋, 브랜치 정보 모두 출력
+
+ git checkout 7자리 : 버전으로 돌아감
+ git checkout 브랜치명 : HEAD가 브랜치를 가리킴
+
+ git remote add origin https://~~~.git : remote/원격저장소 연결
+ git remote show 원격저장소명칭 : 원격저장소 살펴보기   
+ git remote rename 기존명칭 새로운명칭 : 원격저장소 명칭 변경
+ git remote remove/rm 원격자장소명칭 : 원격거장소 삭제
+
+ git tag -a v11(마음대로) 14adfasd(커밋체크섬) -m " adfa " : annotated 태그 생성
+ git log --pretty=oneline : 커밋을 한줄로 예쁘게
+ git tag : 태그 보여주기
+ git tag -d 태그명 : 태그 삭제
+ git push origin :태그명 : 원격저장소 태그 삭제
+ git show 태그명 : 태그 정보 보여준다.
+ git push origin v.1.4 : 태그를 원격에 공유한다.
+ git push origin --tags : 태그 여러개 공유
+
+ git push origin master : 원격저장소에 저장
+
+ git clone https://~~~.git . : 원격저장소에서 로컬저장소로 다운로드 깃폴더까지 저장됨(커밋정보)
+
+ git pull origin master : 원격저장소 새로운 커밋을 로컬저장소에 갱신하기
+
+ git branch 브랜치명 : 브랜치 만들기
+ git branch --delete 브랜치명1, 브랜치명2 : (로컬)브랜치 지우기
+ git push origin :브랜치명 : 원격브랜치 지우기(1개씩)
+
+ git clone -b {branch_name} --single-branch {저장소 URL}
+
+#(HEAD -> master)
+#(origin/master) : 로컬에서 커밋하고 원격저장소에 저장하지 않은 경우, 커밋 최신버전이 상이하므로 원격저장소에서는 (origin/master)가 뜸
+#origin 은 우리가 연결한 깃허브 원격저장소의 닉네임
+
+https://www.git-tower.com/learn/git/faq/git-rename-master-to-main/ : 깃허브 주브랜치 변경 방법
+git pull origin master --allow-unrelated-histories : pulling error 뜰때
