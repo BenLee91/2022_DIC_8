@@ -182,10 +182,8 @@ def InsertData():
         sql = "insert into feature(F1, F2, F3, F4) values(?,?,?,?)"
         # cur.execute(sql, (X_data_study.iat[0, 0], X_data_study.iat[0, 1], X_data_study.iat[0, 2], X_data_study.iat[0, 3]))
         cur.execute(sql, (row[1], row[2], row[3], row[4]))
-        print(row)
     conn.commit()
     conn.close()
-    print(5)
     # SelectData()  # 데이터 입력 후 DB의 내용 불러와서 TableWidget에 넣기 위한 함수 호출
 
 # def SelectData():  # DB 데이터 전체 선택

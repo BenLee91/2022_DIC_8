@@ -1,14 +1,58 @@
+0) log통한 브랜치 상태파악
+  - git log : HEAD가 현재 브랜치의 커밋(버전)에 있는지 확인.
+                (HEAD란 각 브랜치의 현재 커밋위치를 말하며,
+                모든 브랜치는 커밋을 통한 버전관리가 된다.,  So, 커밋의 태크는 날짜로 하는게 좋다.)
+  - git checkout -b {로컬 브랜치명} : 로컬에서 브랜치를 변경 시,  HEAD도 변경된 branch를 따라가게 된다.
+
+1) 초기 깃 셋팅
+  - git init : 원하는 폴더에서 초기화, 로컬 저장소 생성
+  - git add 파일명 : stage에 올림, 커밋 전 상태 (파일명에 .으로 표시하면, 전체파일 선택가능)
+  - git commit -m "설명" : 파일 로컬 저장소로 저장
+  - git checkout -b {로컬 브랜치명} : 로컬 브랜치명을 신규 생성 후, 로컬 신규 브랜치로 옮김. 
+  - git remote add origin https://~~~.git : 원격저장소 연결
+     (origin이란 원격저장소 이름를 뜻하며, 브랜치를 하위에 만들어 관리가 가능함.)
+  - git remote -v : 원격저장소 연결상태 확인
+  - git push origin {원격 브랜치명} : 원격저장소(origin)의 원격브랜치명(ex. master)에 저장
+    (로컬브랜치명과 원격브랜치명을 동일하게 사용하는 것이 중요하다.)
+  - git branch --set-upstream-to origin/(로컬 브랜치명) : 로컬과 원격 브랜치 연동
+
+2) 3자가 github 데이터 clone 하는 법
+  - git init : 원하는 폴더에서 초기화, 로컬 저장소 생성
+  - git remote add origin https://~~~.git : 원격저장소 연결
+   a. 다운로드 방식 (pull) : 추천!
+      - git fetch {원격 저장소명} {원격 브랜치명} : 데이터 동기화
+      - git pull {원격 저장소명} {원격 브랜치명} : 데이터 merge
+   b. 강제 복사 (clone)
+      - git clone -b {원격 브랜치명} https://~~~.git : 원격저장소 내 특정 브랜치 클론
+      - git checkout -b {로컬 브랜치명} : 로컬 브랜치명을 신규 생성 후, 로컬 신규 브랜치로 옮김.
+ 
+3) 데이터 git update하기
+   a. 데이터 업로드 전 commit 하기
+      - git add . 
+      - git commit -m "설명" : 파일 로컬 저장소로 저장 
+      - git remote add origin https://~~~.git : 원격저장소 연결
+   b. 로컬에 commit된 파일을 업로드하기 전, 리모트 저장소 data를 동기화 부터 시켜야함.
+      - git fetch {원격 저장소명} {원격 브랜치명} : 데이터 동기화
+      - git pull {원격 저장소명} {원격 브랜치명} : 데이터 merge
+   c. 동기화 된 이후, data upload가능함.
+      - git push {원격 저장소명} {원격 브랜치명}
+
+4) git branch 삭제: git merge후 이전 branch 삭제 필요함.
+  - git checkout -b {로컬 브랜치명v2} : 로컬 브랜치v2로 update
+  - git branch --delete {로컬 브랜치명} : 기존 브랜치 삭제
+    (작업에러시, 강제적용,  git branch -D {로컬 브랜치명}
+     -> 원격브랜치도 삭제필요함.  git push origin :{로컬 브랜치명}
+
+
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ git 기타 코드 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
 깃허브 연결
  git config --global user.email "next450@gmail.com"
  git config --global user.name "seongheechoi"
 
- git init : 원하는 폴더에서 초기화, 로컬 저장소 생성
 
- git add 파일명 : stage에 올림, 커밋 전 상태
  git add -u : 삭제된 파일이 커밋에 반영이 안될 때 사용
- git status : 현재 버전상태확인 (파일이 수정되면, 빨간색으로 표시되며, git add . 명령어를 통해 로컬에 최신버전으로 버전update함
- git commit -m "설명" : 파일 로컬 저장소로 저장
-
+ git status : 현재 버전상태확인
+  (파일이 수정되면, 빨간색으로 표시되며, git add . 명령어를 통해 로컬에 최신버전으로 버전update함
  git log : 커밋 버전 확인
  git log --oneline --decorate : 커밋확인하나 한줄로 정리되게 
  git log --oneline --decorate --graph --all : 커밋, 브랜치 정보 모두 출력
@@ -16,7 +60,6 @@
  git checkout 7자리 : 버전으로 돌아감
  git checkout 브랜치명 : HEAD가 브랜치를 가리킴
 
- git remote add origin https://~~~.git : remote/원격저장소 연결
  git remote show 원격저장소명칭 : 원격저장소 살펴보기   
  git remote rename 기존명칭 새로운명칭 : 원격저장소 명칭 변경
  git remote remove 원격저장소명칭 : 원격저장소 연결해제
@@ -30,18 +73,6 @@
  git show 태그명 : 태그 정보 보여준다.
  git push origin v.1.4 : 태그를 원격에 공유한다.
  git push origin --tags : 태그 여러개 공유
-
- git push origin master : 원격저장소에 저장
-
- git clone https://~~~.git . : 원격저장소에서 로컬저장소로 다운로드 깃폴더까지 저장됨(커밋정보)
-
- git pull origin master : 원격저장소 새로운 커밋을 로컬저장소에 갱신하기
-
- git branch 브랜치명 : 브랜치 만들기
- git branch --delete 브랜치명1, 브랜치명2 : (로컬)브랜치 지우기
- git push origin :브랜치명 : 원격브랜치 지우기(1개씩)
-
- git clone -b {branch_name} --single-branch {저장소 URL}
 
 #(HEAD -> master)
 #(origin/master) : 로컬에서 커밋하고 원격저장소에 저장하지 않은 경우, 커밋 최신버전이 상이하므로 원격저장소에서는 (origin/master)가 뜸
