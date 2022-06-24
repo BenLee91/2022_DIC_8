@@ -6,7 +6,7 @@
 
  git add 파일명 : stage에 올림, 커밋 전 상태
  git add -u : 삭제된 파일이 커밋에 반영이 안될 때 사용
-
+ git status : 현재 버전상태확인 (파일이 수정되면, 빨간색으로 표시되며, git add . 명령어를 통해 로컬에 최신버전으로 버전update함
  git commit -m "설명" : 파일 로컬 저장소로 저장
 
  git log : 커밋 버전 확인
@@ -19,6 +19,7 @@
  git remote add origin https://~~~.git : remote/원격저장소 연결
  git remote show 원격저장소명칭 : 원격저장소 살펴보기   
  git remote rename 기존명칭 새로운명칭 : 원격저장소 명칭 변경
+ git remote remove 원격저장소명칭 : 원격저장소 연결해제
  git remote remove/rm 원격자장소명칭 : 원격거장소 삭제
 
  git tag -a v11(마음대로) 14adfasd(커밋체크섬) -m " adfa " : annotated 태그 생성
